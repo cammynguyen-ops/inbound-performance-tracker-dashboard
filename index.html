@@ -34,6 +34,12 @@
   .tab-content { display: none; }
   .tab-content.active { display: block; }
   .tab-meta { font-size: 12px; color: #033180; margin-bottom: 18px; padding: 10px 14px; background: #EBF2FE; border-radius: 6px; }
+  .tab-callout {
+    font-size: 12px; color: #011840; margin-bottom: 18px; padding: 12px 16px;
+    background: #FFFFFF; border: 1px solid #CEDFFD; border-left: 4px solid #0960F6;
+    border-radius: 4px; line-height: 1.55;
+  }
+  .tab-callout code { background: #EBF2FE; padding: 1px 5px; border-radius: 3px; font-size: 11px; }
 
   /* Sections */
   .section { margin-bottom: 28px; }
@@ -316,7 +322,7 @@
   <header>
     <h1>Inbound Performance Tracker</h1>
     <div class="subtitle">Through Apr 29, 2026 &middot; Generated for Apr 30, 2026 (today, reporting on yesterday's complete day) &middot; Day 29 of 30</div>
-    <div class="meta">Generated: 2026-04-30 08:51 &middot; Inbound (Source Mapped + I/O/P), Last Touch via Channel Mapped, Events excluded, DM channels only</div>
+    <div class="meta">Generated: 2026-04-30 09:03 &middot; Inbound (Source Mapped + I/O/P), Last Touch via Channel Mapped, Events excluded, DM channels only</div>
   </header>
 
   <div class="tabs">
@@ -921,6 +927,14 @@
   Compare to prior 7 days (Apr 16 → Apr 22)
   and same week last year (Apr 23 → Apr 29, 2025).
 </div>
+<div class="tab-callout">
+  <b>Heads up — what "% of MTD pace" means here vs Monthly Breakdown.</b>
+  The pacing % on this tab is calculated as <code>Actual ÷ (Full Month Plan × MTD share)</code>, where MTD share is the
+  fraction of the month's plan we'd expect by today using the DOW × DOM model.
+  This adjusts for the fact we're not yet at month-end, so the % stays meaningful throughout the month.
+  The <b>Monthly Breakdown</b> tab uses raw <code>Actual ÷ Full Month Plan</code> (no pacing adjustment),
+  which will read lower for the in-progress month. Both use the same actuals.
+</div>
 
 <div class="weekly-section">
   <h3>📋 Headline</h3>
@@ -935,21 +949,21 @@
       <div class="weekly-kpi-label">MQLs MTD</div>
       <div class="weekly-kpi-value">395</div>
       <div class="weekly-kpi-pacing" style="background:#0960F6;color:#FFFFFF;">
-        125% of plan
+        125% of MTD pace
       </div>
     </div>
     <div class="weekly-kpi">
       <div class="weekly-kpi-label">S2s MTD</div>
       <div class="weekly-kpi-value">82</div>
       <div class="weekly-kpi-pacing" style="background:#0960F6;color:#FFFFFF;">
-        104% of plan
+        104% of MTD pace
       </div>
     </div>
     <div class="weekly-kpi">
       <div class="weekly-kpi-label">Pipeline $ MTD</div>
       <div class="weekly-kpi-value">A$3.28M</div>
       <div class="weekly-kpi-pacing" style="background:#0960F6;color:#FFFFFF;">
-        168% of plan
+        168% of MTD pace
       </div>
     </div>
   </div>
@@ -1145,11 +1159,19 @@
 
   <div id="monthly-breakdown" class="tab-content">
     <div class="tab-meta">
-      Each metric: monthly actuals (left) and % attainment vs full-month plan (right).
+      Each metric: monthly actuals (left) and % attainment vs <b>full-month plan</b> (right).
       Past months are full-month actuals; current month (Apr-26) shows MTD through Apr 29; future months are blanked.
       <br/>Color thresholds: <span style="background:#0960F6;color:#FFFFFF;padding:1px 6px;">≥100%</span>
       <span style="background:#EBF2FE;color:#011840;padding:1px 6px;">80–99%</span>
       <span style="background:#FEE2E2;color:#011840;padding:1px 6px;">&lt;80%</span>
+    </div>
+    <div class="tab-callout">
+      <b>Heads up — what "% Attainment" means here vs other tabs.</b>
+      The attainment % on this tab is calculated as <code>Actual ÷ Full Month Plan</code> with <b>no pacing adjustment</b>.
+      For the in-progress month (Apr 2026), this means the % will look low until the month closes —
+      e.g. on day 15 of a 30-day month with linear demand, you'd see about 50% attainment even if you're perfectly on plan.
+      For a pacing-adjusted view (Actual ÷ MTD-paced plan), see the <b>At A Glance</b> or <b>Weekly Review</b> tabs.
+      Both views use the same actuals — only the denominator differs.
     </div>
     
     <div class="monthly-section">
@@ -1168,7 +1190,7 @@
             <th colspan="2"></th>
             <th colspan="13" class="group-actuals">Actuals</th>
             <th class="sep"></th>
-            <th colspan="13" class="group-attain">% Attainment vs Plan</th>
+            <th colspan="13" class="group-attain">% Attainment vs Full Month Plan</th>
           </tr>
         </thead>
         <tbody><tr class="section-row"><td colspan="29"><b>MQLs by Region (#)</b></td></tr><tr class="">
@@ -1320,7 +1342,7 @@
             <th colspan="2"></th>
             <th colspan="13" class="group-actuals">Actuals</th>
             <th class="sep"></th>
-            <th colspan="13" class="group-attain">% Attainment vs Plan</th>
+            <th colspan="13" class="group-attain">% Attainment vs Full Month Plan</th>
           </tr>
         </thead>
         <tbody><tr class="section-row"><td colspan="29"><b>Opportunities by Region (#)</b></td></tr><tr class="">
@@ -1472,7 +1494,7 @@
             <th colspan="2"></th>
             <th colspan="13" class="group-actuals">Actuals</th>
             <th class="sep"></th>
-            <th colspan="13" class="group-attain">% Attainment vs Plan</th>
+            <th colspan="13" class="group-attain">% Attainment vs Full Month Plan</th>
           </tr>
         </thead>
         <tbody><tr class="section-row"><td colspan="29"><b>CVR by Region</b></td></tr><tr class="">
@@ -1608,7 +1630,7 @@
             <th colspan="2"></th>
             <th colspan="13" class="group-actuals">Actuals</th>
             <th class="sep"></th>
-            <th colspan="13" class="group-attain">% Attainment vs Plan</th>
+            <th colspan="13" class="group-attain">% Attainment vs Full Month Plan</th>
           </tr>
         </thead>
         <tbody><tr class="section-row"><td colspan="29"><b>Pipeline $ by Region (AUD)</b></td></tr><tr class="">
