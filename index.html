@@ -161,11 +161,119 @@
     font-size: 11px; text-transform: uppercase; letter-spacing: .04em; text-align: left;
   }
 
-  /* Attainment color coding */
-  td.attain.att-high { background: #0960F6; color: #FFFFFF; font-weight: 700; }
-  td.attain.att-mid  { background: #EBF2FE; color: #011840; }
-  td.attain.att-low  { background: #FEE2E2; color: #011840; }
-  td.attain.att-none { color: #033180; }
+  /* Attainment color coding (scoped to monthly-table so they win over td.cy) */
+  table.monthly-table td.attain.att-high { background: #0960F6; color: #FFFFFF; font-weight: 700; }
+  table.monthly-table td.attain.att-mid  { background: #EBF2FE; color: #011840; }
+  table.monthly-table td.attain.att-low  { background: #FEE2E2; color: #011840; }
+  table.monthly-table td.attain.att-none { background: #EBF2FE; color: #033180; }
+  /* Make sure CY column doesn't override attainment cells */
+  table.monthly-table td.cy.attain.att-high { background: #0960F6; color: #FFFFFF; }
+  table.monthly-table td.cy.attain.att-mid  { background: #EBF2FE; color: #011840; }
+  table.monthly-table td.cy.attain.att-low  { background: #FEE2E2; color: #011840; }
+  table.monthly-table td.cy.attain.att-none { background: #EBF2FE; color: #033180; }
+
+  /* Weekly Review tab */
+  .weekly-section { margin-bottom: 28px; }
+  .weekly-section h3 {
+    font-size: 14px; font-weight: 700; color: #FFFFFF; background: #011840;
+    padding: 8px 14px; border-radius: 6px 6px 0 0; margin: 0 0 12px;
+    text-transform: uppercase; letter-spacing: .04em;
+  }
+  .weekly-section h4 { font-size: 13px; color: #011840; margin: 8px 0 6px; }
+  .weekly-section .caption { font-size: 11px; color: #033180; margin: 0 0 8px; font-style: italic; }
+  .weekly-headline {
+    font-size: 15px; line-height: 1.5; color: #011840;
+    background: #EBF2FE; padding: 12px 16px; border-radius: 6px;
+    border-left: 4px solid #0960F6; margin-bottom: 14px;
+  }
+  .weekly-kpi-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+  .weekly-kpi {
+    background: #FFFFFF; border: 1px solid #CEDFFD; border-radius: 6px;
+    padding: 12px 14px;
+  }
+  .weekly-kpi-label {
+    font-size: 11px; color: #033180; text-transform: uppercase;
+    letter-spacing: .03em; font-weight: 700;
+  }
+  .weekly-kpi-value {
+    font-size: 26px; font-weight: 700; color: #011840; line-height: 1.1; margin-top: 4px;
+  }
+  .weekly-kpi-pacing {
+    display: inline-block; padding: 3px 10px; margin-top: 8px;
+    font-size: 11px; font-weight: 700; border-radius: 4px;
+  }
+  .weekly-kpi-sub { font-size: 11px; color: #033180; margin-top: 4px; }
+
+  table.weekly-table { width: 100%; border-collapse: collapse; font-size: 12px; }
+  table.weekly-table th {
+    background: #EBF2FE; color: #011840; font-weight: 700; padding: 6px 10px;
+    text-align: left; font-size: 11px; text-transform: uppercase; letter-spacing: .03em;
+    border-bottom: 1px solid #CEDFFD;
+  }
+  table.weekly-table th.num { text-align: right; }
+  table.weekly-table td { padding: 6px 10px; border-bottom: 1px solid #EBF2FE; color: #011840; }
+  table.weekly-table td.num { text-align: right; font-variant-numeric: tabular-nums; }
+  table.weekly-table td.delta { font-weight: 700; }
+  table.weekly-table td.pacing { text-align: center; font-weight: 700; }
+
+  .weekly-grid-2 { display: grid; grid-template-columns: 1.4fr 1fr; gap: 16px; }
+  .weekly-2col {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
+    margin-top: 0;
+  }
+  .weekly-2col .weekly-strong, .weekly-2col .weekly-weak { margin-bottom: 0; }
+  .weekly-conf {
+    display: inline-block; padding: 3px 12px; border-radius: 4px;
+    color: #FFFFFF; font-weight: 700; font-size: 11px;
+  }
+  .weekly-notes {
+    background: #EBF2FE; padding: 14px 18px; border-radius: 6px;
+    border: 1px solid #CEDFFD; line-height: 1.5;
+  }
+  .weekly-notes h3 { background: transparent !important; color: #011840 !important; padding: 0 !important; margin: 12px 0 6px; font-size: 14px; }
+  .weekly-notes h4 { color: #033180; margin: 12px 0 4px; font-size: 12px; }
+  .weekly-notes ul { margin: 4px 0 8px 18px; padding: 0; }
+  .weekly-notes li { margin-bottom: 3px; font-size: 12px; }
+  .weekly-notes p { margin: 4px 0; font-size: 12px; }
+
+  /* DQ Analysis tab */
+  .dq-kpi-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 28px; }
+  .dq-kpi {
+    background: #FFFFFF; border: 1px solid #CEDFFD; border-radius: 8px; padding: 14px 16px;
+  }
+  .dq-kpi .kpi-label { font-size: 11px; color: #033180; text-transform: uppercase; letter-spacing: .03em; }
+  .dq-kpi .kpi-value { font-size: 28px; font-weight: 700; color: #011840; line-height: 1.1; margin-top: 4px; }
+  .dq-kpi .kpi-meta { font-size: 11px; color: #033180; margin-top: 2px; }
+  .dq-kpi-deltas { width: 100%; margin-top: 10px; font-size: 11px; }
+  .dq-kpi-deltas td { padding: 3px 0; color: #033180; }
+  .dq-kpi-deltas td:first-child { font-weight: 600; }
+  .dq-top-reason {
+    margin-top: 8px; font-size: 11px; color: #011840;
+    padding-top: 8px; border-top: 1px solid #EBF2FE;
+  }
+
+  .dq-section { margin-bottom: 28px; }
+  .dq-section h3 {
+    font-size: 16px; font-weight: 700; color: #FFFFFF; background: #011840;
+    padding: 8px 14px; border-radius: 6px 6px 0 0; margin: 0 0 0;
+    text-transform: uppercase; letter-spacing: .04em;
+  }
+  .dq-section h4 { margin: 0; font-weight: 700; }
+  .dq-section .caption {
+    font-size: 12px; color: #033180; padding: 8px 14px;
+    background: #EBF2FE; border: 1px solid #CEDFFD; border-bottom: none;
+  }
+  .dq-section .table-scroll { border-top: none; }
+
+  .spam-bars { background: #FFFFFF; border: 1px solid #CEDFFD; padding: 10px 14px; border-radius: 4px; }
+  .spam-month {
+    display: grid; grid-template-columns: 70px 1fr 50px; align-items: center;
+    gap: 10px; padding: 3px 0;
+  }
+  .spam-label { font-size: 11px; color: #033180; font-weight: 600; }
+  .spam-bar-wrap { height: 14px; background: #EBF2FE; border-radius: 2px; }
+  .spam-bar { height: 100%; background: #0960F6; border-radius: 2px; min-width: 2px; }
+  .spam-count { font-size: 12px; color: #011840; font-weight: 700; text-align: right; font-variant-numeric: tabular-nums; }
 
   /* CVR Trends tab */
   .cvr-section { margin-bottom: 32px; }
@@ -208,13 +316,15 @@
   <header>
     <h1>Inbound Performance Tracker</h1>
     <div class="subtitle">Through Apr 28, 2026 &middot; Generated for Apr 29, 2026 (today, reporting on yesterday's complete day) &middot; Day 28 of 30</div>
-    <div class="meta">Generated: 2026-04-29 10:24 &middot; Inbound (Source Mapped + I/O/P), Last Touch via Channel Mapped, Events excluded, DM channels only</div>
+    <div class="meta">Generated: 2026-04-29 11:55 &middot; Inbound (Source Mapped + I/O/P), Last Touch via Channel Mapped, Events excluded, DM channels only</div>
   </header>
 
   <div class="tabs">
     <button class="tab active" onclick="showTab(this, 'at-a-glance')">At A Glance</button>
+    <button class="tab" onclick="showTab(this, 'weekly-review')">Weekly Review</button>
     <button class="tab" onclick="showTab(this, 'monthly-breakdown')">Monthly Breakdown</button>
     <button class="tab" onclick="showTab(this, 'cvr-trends')">CVR Trends</button>
+    <button class="tab" onclick="showTab(this, 'dq-analysis')">DQ Analysis</button>
     <button class="tab" onclick="showTab(this, 'curves-tab')">Pacing Curves</button>
   </div>
 
@@ -803,6 +913,236 @@
 
   </div>
 
+  <div id="weekly-review" class="tab-content">
+    
+<div class="tab-meta">
+  Weekly review for Tuesday Apr 28, 2026 — covers the rolling 7-day window
+  (Apr 22 → Apr 28).
+  Compare to prior 7 days (Apr 15 → Apr 21)
+  and same week last year (Apr 22 → Apr 28, 2025).
+</div>
+
+<div class="weekly-section">
+  <h3>📋 Headline</h3>
+  <div class="weekly-headline">GLOBAL pacing at <b>126%</b> of MTD plan on MQLs and <b>107%</b> on S2s. <b>APAC</b> leading (186%); <b>AMER</b> trailing (116%).</div>
+  <div class="weekly-kpi-row">
+    <div class="weekly-kpi">
+      <div class="weekly-kpi-label">Traffic MTD</div>
+      <div class="weekly-kpi-value">25,178</div>
+      <div class="weekly-kpi-sub">no forecast</div>
+    </div>
+    <div class="weekly-kpi">
+      <div class="weekly-kpi-label">MQLs MTD</div>
+      <div class="weekly-kpi-value">382</div>
+      <div class="weekly-kpi-pacing" style="background:#0960F6;color:#FFFFFF;">
+        126% of plan
+      </div>
+    </div>
+    <div class="weekly-kpi">
+      <div class="weekly-kpi-label">S2s MTD</div>
+      <div class="weekly-kpi-value">78</div>
+      <div class="weekly-kpi-pacing" style="background:#0960F6;color:#FFFFFF;">
+        107% of plan
+      </div>
+    </div>
+    <div class="weekly-kpi">
+      <div class="weekly-kpi-label">Pipeline $ MTD</div>
+      <div class="weekly-kpi-value">A$3.21M</div>
+      <div class="weekly-kpi-pacing" style="background:#0960F6;color:#FFFFFF;">
+        176% of plan
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="weekly-section">
+  <h3>📈 What changed this past week</h3>
+  <div class="weekly-grid-2">
+    <div>
+      <h4>Activity (last 7 days)</h4>
+      <table class="weekly-table">
+        <tr><th></th><th class="num">This Week</th><th class="num">Prior Week</th><th class="num">Δ WoW</th><th class="num">LY Same Week</th></tr>
+        <tr><td>MQLs</td>
+            <td class="num"><b>93</b></td>
+            <td class="num">83</td>
+            <td class="num delta delta-pos">+10</td>
+            <td class="num">111</td>
+        </tr>
+        <tr><td>S2s</td>
+            <td class="num"><b>18</b></td>
+            <td class="num">33</td>
+            <td class="num delta delta-neg">-15</td>
+            <td class="num">17</td>
+        </tr>
+        <tr><td>Pipeline $</td>
+            <td class="num"><b>A$266,000</b></td>
+            <td class="num">A$2.09M</td>
+            <td class="num delta delta-neg">−A$1.82M</td>
+            <td class="num">A$238,000</td>
+        </tr>
+      </table>
+    </div>
+    <div>
+      <h4>Top channels by MQL volume (this week)</h4>
+      <table class="weekly-table">
+        <tr><th>Channel</th><th class="num">MQLs</th></tr>
+        <tr><td>Direct</td><td class="num"><b>38</b></td></tr><tr><td>Paid Search</td><td class="num"><b>24</b></td></tr><tr><td>Organic Search</td><td class="num"><b>14</b></td></tr>
+      </table>
+    </div>
+  </div>
+
+  <h4 style="margin-top:18px;">Top S2 deals this week (by piped ACV)</h4>
+  <table class="weekly-table">
+    <tr><th>Company</th><th>Theater</th><th>Segment</th><th>Channel</th><th class="num">Piped ACV</th></tr>
+    <tr>
+          <td>T.I. Experiences</td>
+          <td>EMEA</td>
+          <td>Mid-Market</td>
+          <td>Other</td>
+          <td class="num"><b>A$28,000</b></td>
+        </tr><tr>
+          <td>Launchers Indoor Battlefield</td>
+          <td>AMER</td>
+          <td>SMB</td>
+          <td>Other</td>
+          <td class="num"><b>A$14,000</b></td>
+        </tr><tr>
+          <td>Top Party Group, LLC</td>
+          <td>AMER</td>
+          <td>SMB</td>
+          <td>Direct</td>
+          <td class="num"><b>A$14,000</b></td>
+        </tr><tr>
+          <td>Overtime Arena</td>
+          <td>AMER</td>
+          <td>SMB</td>
+          <td>Direct</td>
+          <td class="num"><b>A$14,000</b></td>
+        </tr><tr>
+          <td>Black Blanket Play LLC</td>
+          <td>AMER</td>
+          <td>SMB</td>
+          <td>Direct</td>
+          <td class="num"><b>A$14,000</b></td>
+        </tr>
+  </table>
+</div>
+
+<div class="weekly-section weekly-2col">
+  <div class="weekly-strong">
+    <h3 style="background:#0960F6;">✅ Where we're strong</h3>
+    <p class="caption">Top 3 Theater × Channel segments by MTD pacing % (excludes segments with expected MTD &lt; 3).</p>
+    <table class="weekly-table">
+      <tr><th>Segment</th><th class="num">Actual</th><th class="num">Expected</th><th>Pacing</th></tr>
+      <tr>
+          <td>APAC — Organic Search</td>
+          <td class="num">20</td>
+          <td class="num">4.6</td>
+          <td class="pacing" style="background:#0960F6;color:#FFFFFF;"><b>432%</b></td>
+        </tr><tr>
+          <td>AMER — Paid Search</td>
+          <td class="num">61</td>
+          <td class="num">22.2</td>
+          <td class="pacing" style="background:#0960F6;color:#FFFFFF;"><b>275%</b></td>
+        </tr><tr>
+          <td>EMEA — Paid Search</td>
+          <td class="num">20</td>
+          <td class="num">8.3</td>
+          <td class="pacing" style="background:#0960F6;color:#FFFFFF;"><b>240%</b></td>
+        </tr>
+    </table>
+  </div>
+  <div class="weekly-weak">
+    <h3 style="background:#B91C1C;">⚠️ Where we need help</h3>
+    <p class="caption">Bottom 3 Theater × Channel segments — biggest opportunities to improve.</p>
+    <table class="weekly-table">
+      <tr><th>Segment</th><th class="num">Actual</th><th class="num">Expected</th><th>Pacing</th></tr>
+      <tr>
+          <td>AMER — Email</td>
+          <td class="num">1</td>
+          <td class="num">6.5</td>
+          <td class="pacing" style="background:#FEE2E2;color:#011840;"><b>15%</b></td>
+        </tr><tr>
+          <td>AMER — Referrals</td>
+          <td class="num">5</td>
+          <td class="num">21.3</td>
+          <td class="pacing" style="background:#FEE2E2;color:#011840;"><b>24%</b></td>
+        </tr><tr>
+          <td>EMEA — Referrals</td>
+          <td class="num">2</td>
+          <td class="num">7.4</td>
+          <td class="pacing" style="background:#FEE2E2;color:#011840;"><b>27%</b></td>
+        </tr>
+    </table>
+  </div>
+</div>
+
+<div class="weekly-section">
+  <h3>🎯 Landing the month</h3>
+  <p class="caption">2 calendar days / 2 working days remaining in Apr.</p>
+  <table class="weekly-table">
+    <tr>
+      <th>Metric</th>
+      <th class="num">Actual MTD</th>
+      <th class="num">Forecast (full month)</th>
+      <th class="num">To go</th>
+      <th class="num">Run-rate needed</th>
+      <th class="num">Recent (last 7 days)</th>
+      <th>Confidence</th>
+    </tr>
+    <tr>
+      <td><b>MQLs</b></td>
+      <td class="num">382</td>
+      <td class="num">327</td>
+      <td class="num">0</td>
+      <td class="num">0.0/day (calendar)</td>
+      <td class="num">13.3/day</td>
+      <td><span class="weekly-conf" style="background:#0960F6;">High</span></td>
+    </tr>
+    <tr>
+      <td><b>S2s</b></td>
+      <td class="num">78</td>
+      <td class="num">85</td>
+      <td class="num">7</td>
+      <td class="num">3.5/day (working)</td>
+      <td class="num">2.6/day</td>
+      <td><span class="weekly-conf" style="background:#0960F6;">High</span></td>
+    </tr>
+    <tr>
+      <td><b>Pipeline $</b></td>
+      <td class="num">A$3.21M</td>
+      <td class="num">A$2.17M</td>
+      <td class="num">A$0</td>
+      <td class="num">A$0/working day</td>
+      <td class="num">A$38,000/day</td>
+      <td><span class="weekly-conf" style="background:#0960F6;color:#FFFFFF;">High</span></td>
+    </tr>
+  </table>
+</div>
+
+<div class="weekly-section">
+  <h3>📝 Action items & discussion</h3>
+  <p class="caption">Edit <code>/sessions/funny-youthful-mendel/mnt/Analysis/weekly_notes.md</code> before each meeting and re-run the generator. Auto-loaded each refresh.</p>
+  <div class="weekly-notes">
+    <h3>Weekly Pipeline Notes</h3>
+<p>Edit this file before each weekly meeting. The dashboard reads this and renders it as the Action Items section.</p>
+<h4>Open items from prior weeks</h4>
+<ul>
+<li>_No items yet — add things here as they come up._</li>
+</ul>
+<h4>New this week</h4>
+<ul>
+<li>_Pre-populate with anomalies the dashboard surfaced, or topics to discuss with HoM / HoDG._</li>
+</ul>
+<h4>Decisions needed</h4>
+<ul>
+<li>_Any blockers, approvals, or directional calls needed from leadership._</li>
+</ul>
+  </div>
+</div>
+
+  </div>
+
   <div id="monthly-breakdown" class="tab-content">
     <div class="tab-meta">
       Each metric: monthly actuals (left) and % attainment vs full-month plan (right).
@@ -1339,6 +1679,138 @@
       </table>
       </div>
     </div>
+
+    <div class="monthly-section">
+      <h3>Pipeline Created by Channel ($, AUD)</h3>
+      <div class="table-scroll">
+      <table class="monthly-table">
+        <thead>
+          <tr>
+            <th class="theater"></th>
+            <th class="channel"></th>
+            <th class="num">Jan-26</th><th class="num">Feb-26</th><th class="num">Mar-26</th><th class="num">Apr-26</th><th class="num">May-26</th><th class="num">Jun-26</th><th class="num">Jul-26</th><th class="num">Aug-26</th><th class="num">Sep-26</th><th class="num">Oct-26</th><th class="num">Nov-26</th><th class="num">Dec-26</th><th class="num cy">CY26</th>
+          </tr>
+          <tr class="subheader">
+            <th colspan="2"></th>
+            <th colspan="13" class="group-actuals">Actuals (no forecast comparison)</th>
+          </tr>
+        </thead>
+        <tbody><tr class="section-row"><td colspan="15"><b>AMER — by Channel</b></td></tr><tr class="">
+      <td class="theater">AMER</td>
+      <td class="channel">Paid Search</td>
+      <td class="num">154K</td><td class="num">238K</td><td class="num">266K</td><td class="num">266K</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num cy"><b>924K</b></td>
+    </tr><tr class="">
+      <td class="theater">AMER</td>
+      <td class="channel">Direct</td>
+      <td class="num">434K</td><td class="num">574K</td><td class="num">462K</td><td class="num">1.97M</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num cy"><b>3.44M</b></td>
+    </tr><tr class="">
+      <td class="theater">AMER</td>
+      <td class="channel">Organic Search</td>
+      <td class="num">84K</td><td class="num">112K</td><td class="num">154K</td><td class="num">70K</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num cy"><b>420K</b></td>
+    </tr><tr class="">
+      <td class="theater">AMER</td>
+      <td class="channel">Other</td>
+      <td class="num">126K</td><td class="num">84K</td><td class="num">154K</td><td class="num">98K</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num cy"><b>462K</b></td>
+    </tr><tr class="">
+      <td class="theater">AMER</td>
+      <td class="channel">Referrals</td>
+      <td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">42K</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num cy"><b>42K</b></td>
+    </tr><tr class="">
+      <td class="theater">AMER</td>
+      <td class="channel">Email</td>
+      <td class="num">14K</td><td class="num">98K</td><td class="num">14K</td><td class="num">0</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num cy"><b>126K</b></td>
+    </tr><tr class="total-row  is-total">
+      <td class="theater"></td>
+      <td class="channel">Total Pipeline - AMER</td>
+      <td class="num">812K</td><td class="num">1.11M</td><td class="num">1.05M</td><td class="num">2.45M</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num cy"><b>5.42M</b></td>
+    </tr><tr class="section-row"><td colspan="15"><b>EMEA — by Channel</b></td></tr><tr class="">
+      <td class="theater">EMEA</td>
+      <td class="channel">Paid Search</td>
+      <td class="num">42K</td><td class="num">28K</td><td class="num">70K</td><td class="num">42K</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num cy"><b>182K</b></td>
+    </tr><tr class="">
+      <td class="theater">EMEA</td>
+      <td class="channel">Direct</td>
+      <td class="num">140K</td><td class="num">182K</td><td class="num">406K</td><td class="num">602K</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num cy"><b>1.33M</b></td>
+    </tr><tr class="">
+      <td class="theater">EMEA</td>
+      <td class="channel">Organic Search</td>
+      <td class="num">28K</td><td class="num">28K</td><td class="num">28K</td><td class="num">56K</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num cy"><b>140K</b></td>
+    </tr><tr class="">
+      <td class="theater">EMEA</td>
+      <td class="channel">Other</td>
+      <td class="num">14K</td><td class="num">28K</td><td class="num">28K</td><td class="num">42K</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num cy"><b>112K</b></td>
+    </tr><tr class="">
+      <td class="theater">EMEA</td>
+      <td class="channel">Referrals</td>
+      <td class="num">0</td><td class="num">0</td><td class="num">28K</td><td class="num">0</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num cy"><b>28K</b></td>
+    </tr><tr class="">
+      <td class="theater">EMEA</td>
+      <td class="channel">Email</td>
+      <td class="num">0</td><td class="num">0</td><td class="num">14K</td><td class="num">0</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num cy"><b>14K</b></td>
+    </tr><tr class="total-row  is-total">
+      <td class="theater"></td>
+      <td class="channel">Total Pipeline - EMEA</td>
+      <td class="num">224K</td><td class="num">266K</td><td class="num">574K</td><td class="num">742K</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num cy"><b>1.81M</b></td>
+    </tr><tr class="section-row"><td colspan="15"><b>APAC — by Channel</b></td></tr><tr class="">
+      <td class="theater">APAC</td>
+      <td class="channel">Paid Search</td>
+      <td class="num">14K</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num cy"><b>14K</b></td>
+    </tr><tr class="">
+      <td class="theater">APAC</td>
+      <td class="channel">Direct</td>
+      <td class="num">84K</td><td class="num">56K</td><td class="num">28K</td><td class="num">14K</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num cy"><b>182K</b></td>
+    </tr><tr class="">
+      <td class="theater">APAC</td>
+      <td class="channel">Organic Search</td>
+      <td class="num">0</td><td class="num">14K</td><td class="num">14K</td><td class="num">0</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num cy"><b>28K</b></td>
+    </tr><tr class="">
+      <td class="theater">APAC</td>
+      <td class="channel">Other</td>
+      <td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num cy"><b>0</b></td>
+    </tr><tr class="">
+      <td class="theater">APAC</td>
+      <td class="channel">Referrals</td>
+      <td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num cy"><b>0</b></td>
+    </tr><tr class="">
+      <td class="theater">APAC</td>
+      <td class="channel">Email</td>
+      <td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num cy"><b>0</b></td>
+    </tr><tr class="total-row  is-total">
+      <td class="theater"></td>
+      <td class="channel">Total Pipeline - APAC</td>
+      <td class="num">98K</td><td class="num">70K</td><td class="num">42K</td><td class="num">14K</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num cy"><b>224K</b></td>
+    </tr><tr class="section-row"><td colspan="15"><b>Pipeline by Channel — Global</b></td></tr><tr class="">
+      <td class="theater">Paid Search</td>
+      <td class="channel">Paid Search</td>
+      <td class="num">210K</td><td class="num">266K</td><td class="num">336K</td><td class="num">308K</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num cy"><b>1.12M</b></td>
+    </tr><tr class="">
+      <td class="theater">Direct</td>
+      <td class="channel">Direct</td>
+      <td class="num">658K</td><td class="num">812K</td><td class="num">896K</td><td class="num">2.59M</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num cy"><b>4.96M</b></td>
+    </tr><tr class="">
+      <td class="theater">Organic Search</td>
+      <td class="channel">Organic Search</td>
+      <td class="num">112K</td><td class="num">154K</td><td class="num">196K</td><td class="num">126K</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num cy"><b>588K</b></td>
+    </tr><tr class="">
+      <td class="theater">Other</td>
+      <td class="channel">Other</td>
+      <td class="num">140K</td><td class="num">112K</td><td class="num">182K</td><td class="num">140K</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num cy"><b>574K</b></td>
+    </tr><tr class="">
+      <td class="theater">Referrals</td>
+      <td class="channel">Referrals</td>
+      <td class="num">0</td><td class="num">0</td><td class="num">28K</td><td class="num">42K</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num cy"><b>70K</b></td>
+    </tr><tr class="">
+      <td class="theater">Email</td>
+      <td class="channel">Email</td>
+      <td class="num">14K</td><td class="num">98K</td><td class="num">28K</td><td class="num">0</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num cy"><b>140K</b></td>
+    </tr><tr class="total-row  is-total">
+      <td class="theater"></td>
+      <td class="channel">Total Pipeline - Global</td>
+      <td class="num">1.13M</td><td class="num">1.44M</td><td class="num">1.67M</td><td class="num">3.21M</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num cy"><b>7.45M</b></td>
+    </tr></tbody>
+      </table>
+      </div>
+    </div>
   </div>
 
   <div id="cvr-trends" class="tab-content">
@@ -1457,6 +1929,234 @@
       </div>
     </div>
 </div>
+
+  </div>
+
+  <div id="dq-analysis" class="tab-content">
+    
+<div class="tab-meta">
+  Tracks the rate at which Inbound MQLs are getting disqualified by sales, by region and channel.
+  <b>Raw DQ rate</b> is used throughout (DQ ÷ Total leads created in the period).
+  See "Methodology" footnote for an explainer of raw vs settled and the maturity caveat to keep in mind for recent months.
+</div>
+
+<div class="dq-kpi-row">
+  
+    <div class="kpi-card dq-kpi">
+      <div class="kpi-label">GLOBAL — Apr 2026</div>
+      <div class="kpi-value" style="font-size:30px;">32%</div>
+      <div class="kpi-meta">123 DQ of 382 total leads</div>
+      <table class="dq-kpi-deltas">
+        <tr><td>vs Last Month</td><td class="num delta delta-pos"><b>-11.6pp</b></td></tr>
+        <tr><td>vs Last Year</td><td class="num delta delta-pos"><b>-42.2pp</b></td></tr>
+      </table>
+      <div class="dq-top-reason">Top reason: <b>Spam/Junk</b></div>
+    </div>
+    
+  
+    <div class="kpi-card dq-kpi">
+      <div class="kpi-label">AMER — Apr 2026</div>
+      <div class="kpi-value" style="font-size:30px;">20%</div>
+      <div class="kpi-meta">45 DQ of 223 total leads</div>
+      <table class="dq-kpi-deltas">
+        <tr><td>vs Last Month</td><td class="num delta delta-pos"><b>-18.7pp</b></td></tr>
+        <tr><td>vs Last Year</td><td class="num delta delta-pos"><b>-53.5pp</b></td></tr>
+      </table>
+      <div class="dq-top-reason">Top reason: <b>Spam/Junk</b></div>
+    </div>
+    
+  
+    <div class="kpi-card dq-kpi">
+      <div class="kpi-label">EMEA — Apr 2026</div>
+      <div class="kpi-value" style="font-size:30px;">51%</div>
+      <div class="kpi-meta">46 DQ of 90 total leads</div>
+      <table class="dq-kpi-deltas">
+        <tr><td>vs Last Month</td><td class="num delta delta-neg"><b>+3.7pp</b></td></tr>
+        <tr><td>vs Last Year</td><td class="num delta delta-pos"><b>-26.7pp</b></td></tr>
+      </table>
+      <div class="dq-top-reason">Top reason: <b>Spam/Junk</b></div>
+    </div>
+    
+  
+    <div class="kpi-card dq-kpi">
+      <div class="kpi-label">APAC — Apr 2026</div>
+      <div class="kpi-value" style="font-size:30px;">46%</div>
+      <div class="kpi-meta">32 DQ of 69 total leads</div>
+      <table class="dq-kpi-deltas">
+        <tr><td>vs Last Month</td><td class="num delta delta-pos"><b>-13.6pp</b></td></tr>
+        <tr><td>vs Last Year</td><td class="num delta delta-pos"><b>-23.6pp</b></td></tr>
+      </table>
+      <div class="dq-top-reason">Top reason: <b>Spam/Junk</b></div>
+    </div>
+    
+</div>
+
+<div class="dq-section">
+  <h3>Monthly DQ Rate — by Region (raw)</h3>
+  
+    <div class="table-scroll">
+      <table class="monthly-table">
+        <thead>
+          <tr>
+            <th class="theater">Region</th>
+            <th class="num">Jan-26</th><th class="num">Feb-26</th><th class="num">Mar-26</th><th class="num">Apr-26</th><th class="num">May-26</th><th class="num">Jun-26</th><th class="num">Jul-26</th><th class="num">Aug-26</th><th class="num">Sep-26</th><th class="num">Oct-26</th><th class="num">Nov-26</th><th class="num">Dec-26</th>
+            <th class="num cy">CY26</th>
+          </tr>
+        </thead>
+        <tbody><tr><td class="theater">AMER</td><td class="num attain att-high">44%</td><td class="num attain att-high">33%</td><td class="num attain att-high">39%</td><td class="num attain att-high">20%</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num cy attain att-high"><b>33%</b></td></tr><tr><td class="theater">EMEA</td><td class="num attain att-high">48%</td><td class="num attain att-high">44%</td><td class="num attain att-high">47%</td><td class="num attain att-mid">51%</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num cy attain att-high"><b>48%</b></td></tr><tr><td class="theater">APAC</td><td class="num attain att-high">23%</td><td class="num attain att-mid">60%</td><td class="num attain att-mid">60%</td><td class="num attain att-high">46%</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num cy attain att-high"><b>49%</b></td></tr><tr class="total-row"><td class="theater"><b>Overall</b></td><td class="num attain att-high">43%</td><td class="num attain att-high">39%</td><td class="num attain att-high">44%</td><td class="num attain att-high">32%</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num cy attain att-high"><b>39%</b></td></tr></tbody>
+      </table>
+    </div>
+</div>
+
+<div class="dq-section">
+  <h3>Monthly DQ Rate — by Channel (raw)</h3>
+  
+    <div class="table-scroll">
+      <table class="monthly-table">
+        <thead>
+          <tr>
+            <th class="theater">Channel</th>
+            <th class="num">Jan-26</th><th class="num">Feb-26</th><th class="num">Mar-26</th><th class="num">Apr-26</th><th class="num">May-26</th><th class="num">Jun-26</th><th class="num">Jul-26</th><th class="num">Aug-26</th><th class="num">Sep-26</th><th class="num">Oct-26</th><th class="num">Nov-26</th><th class="num">Dec-26</th>
+            <th class="num cy">CY26</th>
+          </tr>
+        </thead>
+        <tbody><tr><td class="theater">Paid Search</td><td class="num attain att-mid">55%</td><td class="num attain att-high">49%</td><td class="num attain att-high">43%</td><td class="num attain att-high">24%</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num cy attain att-high"><b>41%</b></td></tr><tr><td class="theater">Direct</td><td class="num attain att-high">36%</td><td class="num attain att-high">33%</td><td class="num attain att-high">44%</td><td class="num attain att-high">33%</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num cy attain att-high"><b>37%</b></td></tr><tr><td class="theater">Organic Search</td><td class="num attain att-mid">52%</td><td class="num attain att-high">40%</td><td class="num attain att-high">39%</td><td class="num attain att-high">35%</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num cy attain att-high"><b>41%</b></td></tr><tr><td class="theater">Other</td><td class="num attain att-high">38%</td><td class="num attain att-high">33%</td><td class="num attain att-mid">53%</td><td class="num attain att-high">40%</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num cy attain att-high"><b>42%</b></td></tr><tr><td class="theater">Referrals</td><td class="num attain att-high">50%</td><td class="num attain att-low">80%</td><td class="num attain att-high">40%</td><td class="num attain att-high">33%</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num cy attain att-high"><b>47%</b></td></tr><tr><td class="theater">Email</td><td class="num attain att-high">43%</td><td class="num attain att-low">100%</td><td class="num attain att-high">0%</td><td class="num attain att-low">67%</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num cy attain att-high"><b>43%</b></td></tr><tr class="total-row"><td class="theater"><b>Overall</b></td><td class="num attain att-high">43%</td><td class="num attain att-high">39%</td><td class="num attain att-high">44%</td><td class="num attain att-high">32%</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num future">—</td><td class="num cy attain att-high"><b>39%</b></td></tr></tbody>
+      </table>
+    </div>
+</div>
+
+<div class="dq-section">
+  <h3>DQ Reason Mix — by Quarter</h3>
+  <div class="caption">% of DQs in each quarter explained by reason. Top 10 reasons + "Other" bucket.</div>
+  
+    <div class="table-scroll">
+      <table class="monthly-table">
+        <thead>
+          <tr><th class="theater" style="min-width:240px;">DQ Reason</th><th class="num">2024-Q1</th><th class="num">2024-Q2</th><th class="num">2024-Q3</th><th class="num">2024-Q4</th><th class="num">2025-Q1</th><th class="num">2025-Q2</th><th class="num">2025-Q3</th><th class="num">2025-Q4</th><th class="num">2026-Q1</th><th class="num">2026-Q2</th></tr>
+        </thead>
+        <tbody><tr><td class="theater">Spam/Junk</td><td class="num">10.5%</td><td class="num">11.7%</td><td class="num">17.1%</td><td class="num">21.8%</td><td class="num">15.4%</td><td class="num">13.1%</td><td class="num">27.5%</td><td class="num">24.4%</td><td class="num">33.5%</td><td class="num">50.4%</td></tr><tr><td class="theater">Product</td><td class="num">17.1%</td><td class="num">13.0%</td><td class="num">10.1%</td><td class="num">9.1%</td><td class="num">14.3%</td><td class="num">18.3%</td><td class="num">29.2%</td><td class="num">25.0%</td><td class="num">24.7%</td><td class="num">27.6%</td></tr><tr><td class="theater">Unresponsive, Sequence Complete</td><td class="num">13.3%</td><td class="num">16.3%</td><td class="num">18.8%</td><td class="num">23.7%</td><td class="num">25.3%</td><td class="num">21.3%</td><td class="num">0.2%</td><td class="num">0.0%</td><td class="num">0.0%</td><td class="num">0.0%</td></tr><tr><td class="theater">Non-Sales Inquiry</td><td class="num">17.8%</td><td class="num">15.9%</td><td class="num">12.2%</td><td class="num">17.6%</td><td class="num">14.3%</td><td class="num">9.2%</td><td class="num">6.5%</td><td class="num">12.1%</td><td class="num">12.5%</td><td class="num">16.3%</td></tr><tr><td class="theater">Bad Data</td><td class="num">2.8%</td><td class="num">3.8%</td><td class="num">10.0%</td><td class="num">11.7%</td><td class="num">11.7%</td><td class="num">24.2%</td><td class="num">3.5%</td><td class="num">8.1%</td><td class="num">5.8%</td><td class="num">3.3%</td></tr><tr><td class="theater">No Response</td><td class="num">2.6%</td><td class="num">1.9%</td><td class="num">2.5%</td><td class="num">2.4%</td><td class="num">1.9%</td><td class="num">2.3%</td><td class="num">25.9%</td><td class="num">24.2%</td><td class="num">21.3%</td><td class="num">0.8%</td></tr><tr><td class="theater">Venue Guest</td><td class="num">17.6%</td><td class="num">23.7%</td><td class="num">12.7%</td><td class="num">0.0%</td><td class="num">0.0%</td><td class="num">0.0%</td><td class="num">0.0%</td><td class="num">0.0%</td><td class="num">0.0%</td><td class="num">0.0%</td></tr><tr><td class="theater">No Immediate Need</td><td class="num">3.5%</td><td class="num">2.9%</td><td class="num">4.7%</td><td class="num">5.9%</td><td class="num">3.9%</td><td class="num">3.9%</td><td class="num">6.5%</td><td class="num">6.1%</td><td class="num">1.9%</td><td class="num">1.6%</td></tr><tr><td class="theater">Non-guest experience business</td><td class="num">0.0%</td><td class="num">0.6%</td><td class="num">2.7%</td><td class="num">7.7%</td><td class="num">13.1%</td><td class="num">7.8%</td><td class="num">0.8%</td><td class="num">0.0%</td><td class="num">0.0%</td><td class="num">0.0%</td></tr><tr><td class="theater">Other</td><td class="num">6.3%</td><td class="num">7.1%</td><td class="num">3.9%</td><td class="num">0.0%</td><td class="num">0.0%</td><td class="num">0.0%</td><td class="num">0.0%</td><td class="num">0.0%</td><td class="num">0.0%</td><td class="num">0.0%</td></tr><tr><td class="theater">Other</td><td class="num">8.4%</td><td class="num">3.3%</td><td class="num">5.1%</td><td class="num">0.0%</td><td class="num">0.0%</td><td class="num">0.0%</td><td class="num">0.0%</td><td class="num">0.2%</td><td class="num">0.3%</td><td class="num">0.0%</td></tr><tr class="total-row"><td class="theater"><b>Total DQs</b></td><td class="num"><b>427</b></td><td class="num"><b>523</b></td><td class="num"><b>957</b></td><td class="num"><b>573</b></td><td class="num"><b>565</b></td><td class="num"><b>695</b></td><td class="num"><b>510</b></td><td class="num"><b>472</b></td><td class="num"><b>361</b></td><td class="num"><b>123</b></td></tr></tbody>
+      </table>
+    </div>
+</div>
+
+<div class="dq-section">
+  <h3>Spam/Junk Spotlight</h3>
+  <div class="caption">Spam/Junk has been the most-shifted reason in 2026 — worth its own spotlight.</div>
+
+  <h4 style="margin-top:14px;font-size:13px;color:#033180;">Monthly Spam Count (last 12 months)</h4>
+  <div class="spam-bars">
+    
+        <div class="spam-month">
+          <div class="spam-label">May 25</div>
+          <div class="spam-bar-wrap"><div class="spam-bar" style="width:46.96969696969697%"></div></div>
+          <div class="spam-count">31</div>
+        </div>
+        <div class="spam-month">
+          <div class="spam-label">Jun 25</div>
+          <div class="spam-bar-wrap"><div class="spam-bar" style="width:30.303030303030305%"></div></div>
+          <div class="spam-count">20</div>
+        </div>
+        <div class="spam-month">
+          <div class="spam-label">Jul 25</div>
+          <div class="spam-bar-wrap"><div class="spam-bar" style="width:50.0%"></div></div>
+          <div class="spam-count">33</div>
+        </div>
+        <div class="spam-month">
+          <div class="spam-label">Aug 25</div>
+          <div class="spam-bar-wrap"><div class="spam-bar" style="width:100.0%"></div></div>
+          <div class="spam-count">66</div>
+        </div>
+        <div class="spam-month">
+          <div class="spam-label">Sep 25</div>
+          <div class="spam-bar-wrap"><div class="spam-bar" style="width:68.18181818181817%"></div></div>
+          <div class="spam-count">45</div>
+        </div>
+        <div class="spam-month">
+          <div class="spam-label">Oct 25</div>
+          <div class="spam-bar-wrap"><div class="spam-bar" style="width:56.060606060606055%"></div></div>
+          <div class="spam-count">37</div>
+        </div>
+        <div class="spam-month">
+          <div class="spam-label">Nov 25</div>
+          <div class="spam-bar-wrap"><div class="spam-bar" style="width:63.63636363636363%"></div></div>
+          <div class="spam-count">42</div>
+        </div>
+        <div class="spam-month">
+          <div class="spam-label">Dec 25</div>
+          <div class="spam-bar-wrap"><div class="spam-bar" style="width:59.09090909090909%"></div></div>
+          <div class="spam-count">39</div>
+        </div>
+        <div class="spam-month">
+          <div class="spam-label">Jan 26</div>
+          <div class="spam-bar-wrap"><div class="spam-bar" style="width:48.484848484848484%"></div></div>
+          <div class="spam-count">32</div>
+        </div>
+        <div class="spam-month">
+          <div class="spam-label">Feb 26</div>
+          <div class="spam-bar-wrap"><div class="spam-bar" style="width:37.878787878787875%"></div></div>
+          <div class="spam-count">25</div>
+        </div>
+        <div class="spam-month">
+          <div class="spam-label">Mar 26</div>
+          <div class="spam-bar-wrap"><div class="spam-bar" style="width:98.48484848484848%"></div></div>
+          <div class="spam-count">65</div>
+        </div>
+        <div class="spam-month">
+          <div class="spam-label">Apr 26</div>
+          <div class="spam-bar-wrap"><div class="spam-bar" style="width:93.93939393939394%"></div></div>
+          <div class="spam-count">62</div>
+        </div>
+  </div>
+
+  <h4 style="margin-top:18px;font-size:13px;color:#033180;">Spam by Region × Channel (last 90 days)</h4>
+  <div class="table-scroll">
+    <table class="monthly-table">
+      <thead><tr><th class="theater">Region</th><th class="num">Direct</th><th class="num">Organic Search</th><th class="num">Other</th><th class="num">Paid Search</th><th class="num">Referrals</th><th class="num cy">Total</th></tr></thead>
+      <tbody><tr><td class="theater">AMER</td><td class="num">37</td><td class="num">2</td><td class="num">16</td><td class="num">19</td><td class="num">0</td><td class="num cy"><b>74</b></td></tr><tr><td class="theater">EMEA</td><td class="num">26</td><td class="num">9</td><td class="num">7</td><td class="num">6</td><td class="num">3</td><td class="num cy"><b>51</b></td></tr><tr><td class="theater">APAC</td><td class="num">19</td><td class="num">10</td><td class="num">0</td><td class="num">5</td><td class="num">0</td><td class="num cy"><b>34</b></td></tr><tr class="total-row"><td class="theater"><b>Total</b></td><td class="num"><b>82</b></td><td class="num"><b>21</b></td><td class="num"><b>23</b></td><td class="num"><b>30</b></td><td class="num"><b>3</b></td><td class="num cy"><b>159</b></td></tr></tbody>
+    </table></div>
+</div>
+
+<details class="explainer">
+  <summary>Methodology — Raw vs Settled DQ rate, and the maturity caveat</summary>
+  <div class="body">
+    <h4>What this tab shows</h4>
+    <p>
+      <b>Raw DQ rate</b> = Disqualified leads ÷ <i>All leads created in the period</i>.
+      This is what your CRM dashboard shows and what most stakeholders expect.
+    </p>
+
+    <h4>Important caveat for recent months — maturity bias</h4>
+    <p>
+      Sales takes time to work leads. A lead created today won't be DQ'd today — it'll spend time in <code>Working</code> or <code>Nurturing</code>
+      before sales decides. So for the <i>current month</i>, a chunk of leads are still "in flight" and haven't been judged yet.
+      Because raw DQ rate divides by <i>all</i> leads (including those in-flight ones), the current month always looks artificially low —
+      even though many of those in-flight leads will eventually be DQ'd.
+    </p>
+    <p>
+      As of Apr 28, around <b>43%</b>
+      of Apr 2026 leads are still in flight.
+      Expect the Apr raw DQ rate to drift up over the next 30–60 days as those leads settle.
+    </p>
+
+    <h4>Alternative: Settled DQ rate</h4>
+    <p>
+      <b>Settled DQ rate</b> = Disqualified leads ÷ <i>Settled leads only</i>, where "settled" means a lead has reached either
+      <code>Disqualified</code> or <code>Converted</code> status — i.e., sales has finished judging it.
+      Leads still in <code>Working</code>, <code>Nurturing</code>, <code>Assigned</code>, <code>Engaged</code>, or <code>New</code> are excluded from both numerator and denominator.
+    </p>
+    <p>
+      The settled rate is more apples-to-apples across months because every month uses the same denominator definition.
+      For trend questions ("are DQ rates getting worse?") settled is more accurate. We're showing raw because that's what your CRM and stakeholders use,
+      but if you want a true month-over-month comparison, ask for the settled view and we can compute it.
+    </p>
+
+    <h4>Filter applied</h4>
+    <p>
+      Same as the rest of the Performance Tracker: <code>Source Mapped = "Inbound"</code> AND <code>Inbound/Outbound/Partner = "Inbound"</code>,
+      with <code>Channel Mapped = "Events"</code> excluded.
+    </p>
+  </div>
+</details>
 
   </div>
 
